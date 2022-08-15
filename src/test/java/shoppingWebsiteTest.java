@@ -41,9 +41,19 @@ public class shoppingWebsiteTest {
         checkout.click();
         WebElement proceed = driver.findElement(By.cssSelector("#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium"));
         proceed.click();
-        WebElement signUp = driver.findElement(By.id("email_create"));
-        signUp.sendKeys("test@gmail.com");
-        signUp.submit();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("email"))).sendKeys("K@T.com");
+        this.driver.findElement(By.id("passwd")).sendKeys("password");
+        this.driver.findElement(By.id("SubmitLogin")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#center_column > form > p > button > span")))
+                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#form > div > p.checkbox > label"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#form > p > button > span"))).click();
+        wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector("#HOOK_PAYMENT > div:nth-child(1) > div > p > a"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#cart_navigation > button"))).click();
+        assertEquals("Your order on My Store is complete.",
+                this.driver.findElement(By.cssSelector("#center_column > div > p")).getText());
+
 
           }
     @AfterEach
