@@ -17,6 +17,5 @@ public class ftseExercise {
     @Test
     void demoTest() {
         this.driver.get("https://www.hl.co.uk/shares/stock-market-summary/ftse-100/risers");
-        webElement top
     }
 }
